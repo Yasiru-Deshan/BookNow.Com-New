@@ -12,7 +12,7 @@ function TheatreList() {
 
     
       let [search, setSearch] = useState("");
-      const [theatre,setTheatre]= useState([]);
+      let [theatre,setTheatre]= useState([]);
 
       useEffect(() => {
 
@@ -27,6 +27,26 @@ function TheatreList() {
 
     getTheatres();
   }, [])
+
+   const deleteTheatre = async (id) => {
+    let deletion;
+
+    if (window.confirm("Are you sure about deleting this Theatre?")) {
+      deletion = await axios.delete(`http://localhost:8070/api/theatre/${id}`);
+    }
+    //const deletion = await axios.delete(`http://localhost:8070/customers/delete/${id}`);
+  if (deletion){
+       window.alert("Theatre has been removed")
+  }else{
+      window.alert("Sorry! You can only delete your movies")
+  }
+  }
+
+  if(search.length > 0){
+      theatre = theatre.filter((i) => {
+          return i.name.toLowerCase().match(search.toLowerCase());
+      });
+  }
 
     return( 
 
@@ -93,7 +113,7 @@ function TheatreList() {
                         <tr>
                           <td>{c.name}</td>
                           <td><Link to={`${c._id}`}><Button>View</Button></Link></td>      
-                          <td><Link to={`${c._id}`}><Button>Delete</Button></Link></td>                    
+                          <td><Button onClick={()=>deleteTheatre(c._id)}>Delete</Button></td>                    
                         </tr>
                         ))}
                        

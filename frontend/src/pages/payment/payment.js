@@ -2,6 +2,7 @@ import React,{useState,useRef} from 'react';
 import './payment.css';
 import Paypal from './../../components/PayPal';
 import emailjs from '@emailjs/browser';
+import axios from "axios"
 
 function Payment(lightBg){
 
@@ -21,6 +22,40 @@ function Payment(lightBg){
       });
       e.target.reset();
     }
+
+     const cardHoldersName = useRef();
+     const cvv = useRef();
+     const email = useRef();
+     const mobile = useRef();
+     const cardNumber = useRef();
+     const exMonth = useRef();
+     const exYear = useRef();
+
+
+      const submitHandler = async (e)=>{
+       e.preventDefault()
+       let newm;
+
+       const newCard = {
+           cardHoldersName: cardHoldersName.current.value,
+           cardNumber: cardNumber.current.value,
+           expireMonth: exMonth.current.value,
+           expireYear: exYear.current.value,
+           cvv: cvv.current.value,
+           email: email.current.value,
+           mobile: mobile.current.value,
+          
+       }
+
+       try{
+           newm = await axios.post("http://localhost:8070/api/creditcard/",newCard)
+           if(newm){
+               window.alert("Transaction Completed")
+           }
+       }catch(err){
+           console.log(err)
+       }
+   }
 
     return(
         
@@ -43,14 +78,7 @@ function Payment(lightBg){
             <p className="h-1">Contact Details</p>
            
         </div>
-        <div className="d-md-flex">
-            <div className="row" style={{padding:'5px'}}>
-                <div className="col-md-5 col-12 me-md-4"> <input className="form-control" type="text" name="user_name" placeholder="Your Name"/> </div>
-                <div className="col-md-5 col-12 me-md-4"> <input className="form-control" type="text" name="user_email" placeholder="Your Email"/> </div>
-                <div className="col-md-5 col-12 ms-md-1"> <input className="form-control" type="text" placeholder="Phone No"/> </div>
-            </div>
-            <div type="submit" value="Send" className="btn btn-primary">Submit</div>
-        </div>
+        
     </div></form>
 
 
@@ -62,8 +90,10 @@ function Payment(lightBg){
                     <div className="heading mb-3"> PAYMENT METHOD </div>
                     <div className="sub-heading row text-center m-0">
                         {/* <div className="col-6 col-md-6 sub-heading1">By Credit Card</div> */}
-                        <div className="col-6 col-md-6 sub-heading2">By PayPal</div>
-                        <div className="col-6 col-md-6 sub-heading2">Mobile Payment</div>
+                        <button className="col-6 col-md-6 sub-heading2"  onClick={()=>{
+                                setCheckout(true);
+                            }}>By PayPal</button>
+                        <button className="col-6 col-md-6 sub-heading2">By Credit Card</button>
                     </div>
                 </div>
                 <div className="creditcard-body">
@@ -79,16 +109,16 @@ function Payment(lightBg){
                 </div>
                 <div className="creditcard-body col-10 offset-1">
                     <form>
-                        <div className="form-group"> <label><small><strong className="text-muted">CARD HOLDER</strong></small></label> <input className="form-control" placeholder="Devin Caldwell"/> </div>
+                        <div className="form-group"> <label><small><strong className="text-muted">CARD HOLDER</strong></small></label> <input className="form-control" placeholder="Devin Caldwell" ref={cardHoldersName}/> </div>
                         <div className="form-group"> <label><small><strong className="text-muted">CARD NUMBER</strong></small></label>
-                            <div className="d-flex card-number"> <input className="form-control" placeholder="1234-4567-4543-1685"/> <i className="fas fa-credit-card text-muted fa-2x"></i> </div>
+                            <div className="d-flex card-number"> <input className="form-control" placeholder="1234-4567-4543-1685" ref={cardNumber}/> <i className="fas fa-credit-card text-muted fa-2x"></i> </div>
                         </div>
                         <div className="line3">
                             <div className="txt d-flex">
                                 <p><small className="text-muted">EXPERATION DATE</small></p>
                                 <p><small className="text-muted">CVV</small></p>
                             </div>
-                            <div className="form-group row"> <select className="form-control col-5">
+                            <div className="form-group row"> <select className="form-control col-5" ref={exMonth}>
                                     <option>January</option>
                                     <option>February</option>
                                     <option>march</option>
@@ -101,26 +131,33 @@ function Payment(lightBg){
                                     <option>October</option>
                                     <option>November</option>
                                     <option>December</option>
-                                </select> <select className="form-control col-4">
+                                </select> <select className="form-control col-4" ref={exYear}>
                                     <option>2020</option>
                                     <option>2021</option>
                                     <option>2022</option>
                                     <option>2023</option>
                                     <option>2024</option>
                                     <option>2025</option>
-                                </select> <input className="col-3 col-md-2 offset-md-1 text-left" type="text" placeholder="234"/> </div>
+                                </select> <input className="col-3 col-md-2 offset-md-1 text-left" type="text" placeholder="234" ref={cvv}/> </div>
                         </div>
+                        <div className="d-md-flex">
+            <div className="row" style={{padding:'5px'}}>
+                
+                <div className="col-md-5 col-12 me-md-4"> <input className="form-control" type="text" name="user_email" placeholder="Your Email" ref={email}/> </div>
+                <div className="col-md-5 col-12 ms-md-1"> <input className="form-control" type="text" placeholder="Phone No" ref={mobile}/> </div>
+            </div>
+       
+        </div>
                     </form>
                 </div>
                 <div className="card-footer col-10 offset-1 border-0 footer2">
                     <div className="d-flex total mb-5">
                         <p><strong>TOTAL</strong></p>
-                        <p><strong>$ 1235</strong></p>
+                        <p><strong>Rs 4235</strong></p>
                     </div> <button className="btn col-12"
-                            onClick={()=>{
-                                setCheckout(true);
-                            }}
+                            onClick={submitHandler}
                           > PAY </button>
+
                 </div>
             </div>
         </div>

@@ -282,7 +282,7 @@ const Movie = () =>{
                    
 
                    <form className="commenting" onSubmit={submitHandler}>
-                    <input placeholder="Leave a comment here..."
+                    <input placeholder="You can add reviews here..."
                            type="text"
                            required
                            className="commentinput"

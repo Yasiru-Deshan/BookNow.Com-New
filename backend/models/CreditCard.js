@@ -21,7 +21,7 @@ const creditCardSchema = new mongoose.Schema(
         },
 
         expireMonth:{
-            type: Number
+            type: String
         },
         expireYear:{
             type: Number

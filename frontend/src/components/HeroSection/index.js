@@ -34,11 +34,10 @@ const HeroSection = () => {
             <HeroContent>
                 <HeroH1 data-aos="fade-right">Welcome to BookNow.com</HeroH1>
                 <HeroP data-aos="fade-left">
-                Enjoy popular movies and TV shows. Join FlickPlix now 
-                for USD 5.99 per month. Cancel anytime.
+                
                 </HeroP>
                 <HeroBtnWrapper data-aos="fade-up">
-                    <Buttong to='/register' onMouseEnter = {onHover} 
+                    <Buttong to='/browse' onMouseEnter = {onHover} 
                     onMouseLeave = {onHover}
                     >
                         Get started {hover ? <ArrowForward/>:<ArrowRight/>}

@@ -21,6 +21,7 @@ function MovieList() {
       const [trailer, setTrailer] = useState("");
       const [image,setImage] = useState("");
       const [id,setId] = useState("");
+      
 
        useEffect(() => {
 
@@ -83,6 +84,12 @@ function MovieList() {
       window.alert("Sorry! You can only delete your movies")
   }
   }
+
+  if(search.length > 0){
+      movieList = movieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
+    }
 
     return( 
 
@@ -197,6 +204,7 @@ function MovieList() {
                         {movieList.map(m => (
                         <tr>
                           <td>{m.title}</td>
+                          <td><Link to={`/movie/${m._id}`}><Button>View</Button></Link></td>
                            <td><Button onClick={()=>{setId(m._id);setModal(true);}}>Update</Button></td>
                           <td><Button variant="danger" onClick={()=>deleteMovie(m._id)}>Delete</Button></td>                            
                         </tr>

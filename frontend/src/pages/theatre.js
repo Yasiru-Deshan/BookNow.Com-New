@@ -232,10 +232,7 @@ function Theatre({lightBg}) {
            
                     Add Movie
                  </Button></Link>
-                <Button variant="primary" style={{width:'225px', height:'50px'}} type="submit">
-          
-                    Delete Movie
-                </Button>
+       
                     </TableCard>
                  
                    </TableWrapper> 
