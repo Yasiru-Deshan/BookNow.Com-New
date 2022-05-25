@@ -1,0 +1,253 @@
+
+
+head,
+body {
+    background-color: white
+}
+
+.box1 {
+    background-color: #263238;
+    color: white
+}
+
+.creditcard-header {
+    background: none
+}
+
+.box1 {
+    height: 600px
+}
+
+.box2 {
+    background-color: white;
+    height: 600px
+}
+
+.heading {
+    font-weight: 900
+}
+
+.heading2 {
+    padding-left: 40px
+}
+
+.box2-head {
+    font-weight: 900;
+    background: none;
+    border: none
+}
+
+.creditcard-header {
+    margin-top: 50px;
+    padding-left: 19px
+}
+
+.sub-heading {
+    font-weight: 900;
+    font-size: 14px
+}
+
+.sub-heading2 {
+    border: 1px solid white;
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.sub-heading1 {
+    background-color: white;
+    color: #263238;
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+.credit {
+    position: absolute;
+    left: 8vw
+}
+
+.frnt {
+    z-index: 2;
+    position: absolute
+}
+
+.back {
+    position: absolute;
+    z-index: 1;
+    left: 70px;
+    top: 30px
+}
+
+.form-group>input {
+    border: none;
+    border-bottom: 1px solid lightgray
+}
+
+.creditcard-number>input {
+    border: none
+}
+
+.creditcard-number {
+    border-bottom: 1px solid lightgray
+}
+
+.creditcard-number>input::-webkit-input-placeholder {
+    color: peachpuff;
+    font-size: 25px
+}
+
+.creditcard-number>input::-moz-placeholder {
+    color: peachpuff;
+    font-size: 25px
+}
+
+.creditcard-number>input:-ms-input-placeholder {
+    color: peachpuff;
+    font-size: 25px
+}
+
+.creditcard-number>input::placeholder {
+    color: peachpuff;
+    font-size: 25px
+}
+
+input.focus,
+input:focus {
+    outline: 0;
+    box-shadow: none !important
+}
+
+.creditcard-number.hover,
+.creditcard-number:hover {
+    outline: 0;
+    box-shadow: none !important;
+    border-bottom: 1px solid lightskyblue
+}
+
+select.focus,
+select:focus {
+    outline: 0;
+    box-shadow: none !important
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid lightgray
+}
+
+.txt {
+    justify-content: space-between
+}
+
+.txt>p>small {
+    font-weight: 900
+}
+
+.total {
+    justify-content: space-between
+}
+
+.btn {
+    height: 60px;
+    background-color: #00B8D4;
+    color: white
+}
+
+.footer2 {
+    background: none
+}
+
+.btn.focus,
+.btn:focus {
+    outline: 0;
+    box-shadow: none !important
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .inner {
+        margin-left: 150px
+    }
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+
+p {
+    margin: 0px
+}
+
+.heading {
+    cursor: pointer
+}
+
+.callback {
+    padding: 30px;
+    margin-top: 50px;
+    ;
+    color: white
+}
+
+.callback .fas.fa-headphones {
+    font-size: 30px;
+    color: #ffdf6c;
+    padding-bottom: 10px
+}
+
+.callback .h-1 {
+    font-size: 28px;
+    font-weight: 500
+}
+
+.callback .p-1 {
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 10px
+}
+
+.callback .btn.btn-primary {
+    font-size: 12px;
+    background: #2845BA;
+    border-radius: 0px;
+    width: 130px;
+    height: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.callback .btn.btn-primary:hover {
+    background-color: #3f59c0
+}
+
+.callback .form-control {
+    width: 200px;
+    height: 50px;
+    box-shadow: none
+}
+
+::placeholder {
+    font-size: 12px;
+    color: black !important;
+    font-weight: 600
+}
+
+@media (max-width:500px) {
+    body {
+        padding: 20px 0
+    }
+
+    .callback .form-control {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 15px
+    }
+
+    .callback .btn.btn-primary {
+        width: 100%
+    }
+}
